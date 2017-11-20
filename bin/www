@@ -7,10 +7,24 @@
 var app = require('../app');
 var debug = require('debug')('android-final-project-api:server');
 var http = require('http');
-
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+const config = require('../config/database');
 /**
  * Get port from environment and store in Express.
  */
+
+// Database Connection
+mongoose.connect(config.uri, {
+    useMongoClient: true,
+}, (err) => {
+    // Check if database was able to connect
+    if (err) {
+        console.log('Could NOT connect to database: ', err); // Return error message
+    } else {
+        console.log('Connected to ' + config.db); // Return success message
+    }
+});
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -25,7 +39,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, () => {
+    console.log('Listening on port ' + port);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 

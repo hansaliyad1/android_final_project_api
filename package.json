@@ -9,9 +9,15 @@
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^4.0.0",
     "express": "~4.15.5",
+    "mongoose": "^4.13.4",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
     "serve-favicon": "~2.4.5"
-  }
+  },
+  "description": "Android Final Project to store user app data in database",
+  "main": "app.js",
+  "author": "Dharmang Hansaliya",
+  "license": "ISC"
 }
